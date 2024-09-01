@@ -1,5 +1,6 @@
-export const PAGINATION = {
+export const DEFAULT_PAGINATION = {
   LIMIT: 10,
+  CURRENT_PAGE: 1,
 }
 
 export const DATE_FORMAT = {

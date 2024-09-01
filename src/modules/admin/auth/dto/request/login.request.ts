@@ -7,7 +7,6 @@ export class LoginRequest {
   @IsEmail()
   @ApiProperty({
     required: true,
-    type: 'string',
     format: 'email',
   })
   email: string
@@ -16,7 +15,6 @@ export class LoginRequest {
   @IsNotEmpty()
   @ApiProperty({
     required: true,
-    type: 'string',
   })
   password: string
 }
