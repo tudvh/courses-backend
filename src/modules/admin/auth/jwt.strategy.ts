@@ -5,7 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { ExtractJwt, Strategy } from 'passport-jwt'
 import { Repository } from 'typeorm'
 
-import { AdminUser } from '@/common/entities'
+import { AdminUser } from '@/database/entities'
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'admin-jwt') {
@@ -21,8 +21,6 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'admin-jwt') {
   }
 
   async validate(args: { userId: string }): Promise<AdminUser> {
-    console.log('vo day')
-
     const adminUser = await this.adminUserRepository.findOneBy({ id: args.userId })
 
     if (!adminUser) {

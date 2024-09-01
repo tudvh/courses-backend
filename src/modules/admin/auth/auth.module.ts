@@ -3,7 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { JwtModule } from '@nestjs/jwt'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { AdminUser } from '@/common/entities'
+import { AdminUser } from '@/database/entities'
 import { AuthController } from './auth.controller'
 import { AuthService } from './auth.service'
 import { JwtStrategy } from './jwt.strategy'
@@ -17,7 +17,7 @@ import { JwtStrategy } from './jwt.strategy'
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get('JWT_ADMIN_SECRET'),
         signOptions: {
-          expiresIn: `${configService.get('JWT_ADMIN_EXPIRATION_TIME')}s`,
+          expiresIn: `${configService.get('JWT_ADMIN_TOKEN_EXPIRES_IN')}s`,
         },
       }),
     }),

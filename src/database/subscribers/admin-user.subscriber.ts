@@ -1,7 +1,7 @@
 import { EntitySubscriberInterface, EventSubscriber, InsertEvent, UpdateEvent } from 'typeorm'
 
+import { BcryptUtil } from '@/common/utils'
 import { AdminUser } from '../entities'
-import { BcryptUtil } from '../utils'
 
 @EventSubscriber()
 export class AdminUserSubscriber implements EntitySubscriberInterface<AdminUser> {

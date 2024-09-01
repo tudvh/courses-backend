@@ -5,8 +5,8 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { plainToInstance } from 'class-transformer'
 import { Repository } from 'typeorm'
 
-import { AdminUser } from '@/common/entities'
 import { BcryptUtil } from '@/common/utils'
+import { AdminUser } from '@/database/entities'
 import { LoginRequest } from './dto/request'
 import { LoginResponse, ProfileResponse } from './dto/response'
 
@@ -35,7 +35,7 @@ export class AuthService {
 
     return {
       accessToken: this.jwtService.sign({ userId: adminUser.id }),
-      expiresIn: parseInt(this.configService.get('JWT_ADMIN_EXPIRATION_TIME')),
+      expiresIn: parseInt(this.configService.get('JWT_ADMIN_TOKEN_EXPIRES_IN')),
       user: plainToInstance(ProfileResponse, adminUser, {
         excludeExtraneousValues: true,
       }),

@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm'
 import { Seeder, SeederFactoryManager } from 'typeorm-extension'
 
-import { AdminUser } from '@/common/entities'
+import { AdminUser } from '../entities'
 
 export default class AdminUserSeeder implements Seeder {
   public async run(dataSource: DataSource, factoryManager: SeederFactoryManager): Promise<any> {
@@ -9,7 +9,7 @@ export default class AdminUserSeeder implements Seeder {
 
     await adminUserRepository.save({
       firstName: 'Admin',
-      lastName: 'Nguyuễn',
+      lastName: 'Nguyễn',
       email: 'admin@example.com',
       password: 'password',
     })
